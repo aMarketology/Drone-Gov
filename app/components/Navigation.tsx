@@ -34,8 +34,8 @@ export default function Navigation() {
               whileHover={{ scale: 1.05 }}
               className="flex items-center"
             >
-              <div className={`text-2xl font-bold ${scrolled ? 'text-slate-900' : 'text-white'}`}>
-                <span className={scrolled ? 'text-#d12b1f' : 'text-#ee3124'}>Resolute</span> ISR
+              <div className="text-2xl font-bold text-slate-900">
+                <span className="text-resolute-primary">Resolute</span> ISR
               </div>
             </motion.div>
           </Link>
@@ -51,24 +51,16 @@ export default function Navigation() {
               >
                 <Link
                   href={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
-                  className={`font-medium transition-colors relative group ${
-                    scrolled
-                      ? 'text-gray-700 hover:text-#d12b1f'
-                      : 'text-white hover:text-#ee3124'
-                  }`}
+                  className="font-medium transition-colors relative group text-gray-700 hover:text-resolute-primary"
                 >
                   {item}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-#ee3124 transition-all group-hover:w-full" />
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-resolute-primary transition-all group-hover:w-full" />
                 </Link>
               </motion.div>
             ))}
             <Link
               href="/contact"
-              className={`font-semibold px-6 py-2 rounded-lg transition-all ${
-                scrolled
-                  ? 'bg-#d12b1f text-white hover:bg-blue-700'
-                  : 'bg-#ee3124 text-white hover:bg-#d12b1f'
-              }`}
+              className="font-semibold px-6 py-2 rounded-lg transition-all bg-resolute-primary text-white hover:bg-red-700"
             >
               Contact Us
             </Link>
@@ -81,26 +73,20 @@ export default function Navigation() {
             whileTap={{ scale: 0.9 }}
           >
             <motion.div
-              className={`w-6 h-0.5 transition-all ${
-                scrolled ? 'bg-gray-900' : 'bg-white'
-              }`}
+              className="w-6 h-0.5 bg-gray-900 transition-all"
               animate={{
                 rotate: mobileMenuOpen ? 45 : 0,
                 y: mobileMenuOpen ? 8 : 0,
               }}
             />
             <motion.div
-              className={`w-6 h-0.5 transition-all ${
-                scrolled ? 'bg-gray-900' : 'bg-white'
-              }`}
+              className="w-6 h-0.5 bg-gray-900 transition-all"
               animate={{
                 opacity: mobileMenuOpen ? 0 : 1,
               }}
             />
             <motion.div
-              className={`w-6 h-0.5 transition-all ${
-                scrolled ? 'bg-gray-900' : 'bg-white'
-              }`}
+              className="w-6 h-0.5 bg-gray-900 transition-all"
               animate={{
                 rotate: mobileMenuOpen ? -45 : 0,
                 y: mobileMenuOpen ? -8 : 0,
@@ -128,7 +114,7 @@ export default function Navigation() {
                   >
                     <Link
                       href={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
-                      className="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-#d12b1f transition font-medium rounded"
+                      className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-resolute-primary transition font-medium rounded"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {item}
@@ -138,7 +124,7 @@ export default function Navigation() {
                 <div className="px-4 pt-2">
                   <Link
                     href="/contact"
-                    className="block w-full bg-#d12b1f hover:bg-blue-700 text-white text-center font-semibold px-6 py-3 rounded-lg transition"
+                    className="block w-full bg-resolute-primary hover:bg-red-700 text-white text-center font-semibold px-6 py-3 rounded-lg transition"
                   >
                     Contact Us
                   </Link>
