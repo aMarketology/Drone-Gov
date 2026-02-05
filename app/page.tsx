@@ -1,353 +1,83 @@
 'use client'
 
+import { useRef, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import Link from 'next/link'
 import Image from 'next/image'
+import Link from 'next/link'
 import Navigation from './components/Navigation'
 import Footer from './components/Footer'
-import { useEffect, useRef, useState, useCallback } from 'react'
-
-interface Spark {
-  id: number
-  x: number
-  y: number
-  vx: number
-  vy: number
-  life: number
-  size: number
-  color: string
-}
 
 export default function Home() {
   const audioRef = useRef<HTMLAudioElement>(null)
-  const heroRef = useRef<HTMLElement>(null)
-  const [sparks, setSparks] = useState<Spark[]>([])
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
-  const [isInHero, setIsInHero] = useState(false)
-  const [textGlowIntensity, setTextGlowIntensity] = useState(1)
-  const sparkIdRef = useRef(0)
-  const textRef = useRef<HTMLDivElement>(null)
+  const [audioStarted, setAudioStarted] = useState(false)
 
-  // Create sparks on mouse move
-  const createSparks = useCallback((x: number, y: number) => {
-    const newSparks: Spark[] = []
-    const sparkCount = Math.floor(Math.random() * 4) + 2 // 2-5 sparks
-
-    for (let i = 0; i < sparkCount; i++) {
-      const angle = Math.random() * Math.PI * 2
-      const speed = Math.random() * 8 + 4
-      const colors = ['#ee3124', '#ff6b35', '#ffa500', '#ffcc00', '#ffffff', '#ff4444']
-      
-      newSparks.push({
-        id: sparkIdRef.current++,
-        x,
-        y,
-        vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed - 2, // slight upward bias
-        life: 1,
-        size: Math.random() * 4 + 2,
-        color: colors[Math.floor(Math.random() * colors.length)]
-      })
+  useEffect(() => {
+    const startAudio = () => {
+      if (audioRef.current && !audioStarted) {
+        audioRef.current.volume = 0.15
+        audioRef.current.play().catch(() => {})
+        setAudioStarted(true)
+      }
     }
     
-    setSparks(prev => [...prev, ...newSparks].slice(-50)) // Keep max 50 sparks
-  }, [])
-
-  // Check if cursor is near text and intensify glow
-  const checkTextProximity = useCallback((x: number, y: number) => {
-    if (textRef.current) {
-      const rect = textRef.current.getBoundingClientRect()
-      const centerX = rect.left + rect.width / 2
-      const centerY = rect.top + rect.height / 2
-      const distance = Math.sqrt(Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2))
-      const maxDistance = 300
-      
-      if (distance < maxDistance) {
-        const intensity = 1 + ((maxDistance - distance) / maxDistance) * 3
-        setTextGlowIntensity(intensity)
-        // Create extra sparks when near text
-        if (distance < 150 && Math.random() > 0.7) {
-          createSparks(x, y)
-        }
-      } else {
-        setTextGlowIntensity(1)
-      }
-    }
-  }, [createSparks])
-
-  // Check if mouse is in hero section
-  const checkIfInHero = useCallback((x: number, y: number) => {
-    if (heroRef.current) {
-      const rect = heroRef.current.getBoundingClientRect()
-      const inHero = x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom
-      setIsInHero(inHero)
-      return inHero
-    }
-    return false
-  }, [])
-
-  // Handle mouse movement
-  useEffect(() => {
-    let lastX = 0
-    let lastY = 0
-    let frameCount = 0
-
-    const handleMouseMove = (e: MouseEvent) => {
-      const { clientX, clientY } = e
-      setMousePos({ x: clientX, y: clientY })
-      
-      // Check if in hero section
-      const inHero = checkIfInHero(clientX, clientY)
-      
-      if (inHero) {
-        // Only create sparks every few pixels of movement
-        const distance = Math.sqrt(Math.pow(clientX - lastX, 2) + Math.pow(clientY - lastY, 2))
-        frameCount++
-        
-        if (distance > 20 && frameCount % 2 === 0) {
-          createSparks(clientX, clientY)
-          lastX = clientX
-          lastY = clientY
-        }
-        
-        checkTextProximity(clientX, clientY)
-      } else {
-        setTextGlowIntensity(1)
-      }
-    }
-
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [createSparks, checkTextProximity])
-
-  // Animate sparks
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setSparks(prev => 
-        prev
-          .map(spark => ({
-            ...spark,
-            x: spark.x + spark.vx,
-            y: spark.y + spark.vy,
-            vy: spark.vy + 0.3, // gravity
-            life: spark.life - 0.03,
-            size: spark.size * 0.97
-          }))
-          .filter(spark => spark.life > 0)
-      )
-    }, 16)
-
-    return () => clearInterval(interval)
-  }, [])
-
-  useEffect(() => {
-    // Play engine sound on mount
-    const playAudio = () => {
-      if (audioRef.current) {
-        audioRef.current.volume = 0.3
-        audioRef.current.play().catch(error => {
-          console.log('Audio autoplay was prevented:', error)
-        })
-      }
-    }
-
-    // Try to play immediately
-    playAudio()
-
-    // Also play on first user interaction (click/touch) if autoplay was blocked
-    const handleInteraction = () => {
-      playAudio()
-      document.removeEventListener('click', handleInteraction)
-      document.removeEventListener('touchstart', handleInteraction)
-      document.removeEventListener('scroll', handleInteraction)
-      document.removeEventListener('mousemove', handleInteraction)
-    }
-
-    document.addEventListener('click', handleInteraction)
-    document.addEventListener('touchstart', handleInteraction)
-    document.addEventListener('scroll', handleInteraction)
-    document.addEventListener('mousemove', handleInteraction)
-
+    window.addEventListener('click', startAudio, { once: true })
+    window.addEventListener('scroll', startAudio, { once: true })
+    
     return () => {
-      document.removeEventListener('click', handleInteraction)
-      document.removeEventListener('touchstart', handleInteraction)
-      document.removeEventListener('scroll', handleInteraction)
-      document.removeEventListener('mousemove', handleInteraction)
+      window.removeEventListener('click', startAudio)
+      window.removeEventListener('scroll', startAudio)
     }
-  }, [])
+  }, [audioStarted])
 
   return (
-    <div className="min-h-screen bg-[#f2f2f2]">
-      <Navigation />
-
-      {/* Custom Spark Cursor - Only visible in hero section */}
-      {isInHero && (
-        <div 
-          className="fixed pointer-events-none z-[100] mix-blend-screen"
-          style={{ 
-            left: mousePos.x - 12, 
-            top: mousePos.y - 12,
-          }}
-        >
-          {/* Main cursor glow */}
-          <div className="w-6 h-6 relative">
-            <div className="absolute inset-0 bg-gradient-radial from-white via-orange-400 to-transparent rounded-full animate-pulse" 
-                 style={{
-                   boxShadow: '0 0 20px #ee3124, 0 0 40px #ff6b35, 0 0 60px #ffa500'
-                 }}
-            />
-            <div className="absolute inset-1 bg-white rounded-full opacity-80" />
-          </div>
-        </div>
-      )}
-
-      {/* Spark Particles - Only visible in hero section */}
-      {isInHero && sparks.map(spark => (
-        <div
-          key={spark.id}
-          className="fixed pointer-events-none z-[99]"
-          style={{
-            left: spark.x,
-            top: spark.y,
-            width: spark.size,
-            height: spark.size,
-            backgroundColor: spark.color,
-            borderRadius: '50%',
-            opacity: spark.life,
-            boxShadow: `0 0 ${spark.size * 2}px ${spark.color}, 0 0 ${spark.size * 4}px ${spark.color}`,
-            transform: 'translate(-50%, -50%)'
-          }}
-        />
-      ))}
-
-      {/* Background Engine Sound */}
-      <audio ref={audioRef} loop autoPlay playsInline>
+    <div className="bg-white text-gray-900">
+      <audio ref={audioRef} loop>
         <source src="/plane-engine.wav" type="audio/wav" />
-        <source src="/plane-engine.wav" type="audio/wave" />
       </audio>
-
-      {/* === HERO SECTION === */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden cursor-none">
-        {/* Background Image */}
+      
+      <Navigation />
+      
+      {/* Hero Section - Full Screen */}
+      <section className="h-screen w-full relative">
         <div className="absolute inset-0">
           <Image
-            src="/IMG_1173 Kenneth Burger.JPG"
-            alt="Resolute Eagle UAS"
+            src="/IMG_1207 Kenneth Burger.JPG"
+            alt="Resolute ISR Drone"
             fill
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-white/90" />
         </div>
-
-        {/* Animated Drone Flying Around */}
-        <motion.div
-          animate={{ 
-            x: ['-20vw', '120vw', '120vw', '-20vw', '-20vw'],
-            y: ['-10vh', '10vh', '80vh', '70vh', '-10vh'],
-            scale: [0.6, 1, 0.8, 0.7, 0.6],
-            rotate: [10, -5, -15, 5, 10],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "linear",
-            times: [0, 0.25, 0.5, 0.75, 1]
-          }}
-          className="absolute top-0 left-0 pointer-events-none z-[5]"
-        >
-          <div className="relative w-[700px] h-[500px]">
-            <Image
-              src="/Resolute Eagle Kenneth Burger.png"
-              alt="Flying Eagle"
-              fill
-              className="object-contain filter drop-shadow-2xl"
-            />
-          </div>
-        </motion.div>
         
-        {/* Content Container */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 py-32 text-center">
-          <div className="space-y-8 max-w-4xl mx-auto">
-            
-            {/* Main Headline */}
-            <motion.div
-              ref={textRef}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="space-y-2"
-            >
-              <motion.h1 
-                className="text-4xl md:text-6xl lg:text-7xl font-light text-white tracking-wide leading-tight uppercase relative"
-                style={{
-                  textShadow: `0 0 ${20 * textGlowIntensity}px rgba(238, 49, 36, ${0.5 * textGlowIntensity}), 0 0 ${40 * textGlowIntensity}px rgba(238, 49, 36, ${0.3 * textGlowIntensity}), 0 0 ${60 * textGlowIntensity}px rgba(238, 49, 36, ${0.2 * textGlowIntensity}), 0 0 ${80 * textGlowIntensity}px rgba(255, 107, 53, ${0.3 * textGlowIntensity})`
-                }}
-                animate={{
-                  scale: [1, 1.01, 1],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  ease: "easeInOut"
-                }}
-              >
-                Intelligence.
-              </motion.h1>
-              <motion.h2 
-                className="text-4xl md:text-6xl lg:text-7xl font-light text-white tracking-wide leading-tight uppercase relative"
-                style={{
-                  textShadow: `0 0 ${20 * textGlowIntensity}px rgba(238, 49, 36, ${0.5 * textGlowIntensity}), 0 0 ${40 * textGlowIntensity}px rgba(238, 49, 36, ${0.3 * textGlowIntensity}), 0 0 ${60 * textGlowIntensity}px rgba(238, 49, 36, ${0.2 * textGlowIntensity}), 0 0 ${80 * textGlowIntensity}px rgba(255, 107, 53, ${0.3 * textGlowIntensity})`
-                }}
-                animate={{
-                  scale: [1, 1.01, 1],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  ease: "easeInOut",
-                  delay: 0.3
-                }}
-              >
-                Surveillance.
-              </motion.h2>
-              <motion.h2 
-                className="text-4xl md:text-6xl lg:text-7xl font-light text-white tracking-wide leading-tight uppercase relative"
-                style={{
-                  textShadow: `0 0 ${20 * textGlowIntensity}px rgba(238, 49, 36, ${0.5 * textGlowIntensity}), 0 0 ${40 * textGlowIntensity}px rgba(238, 49, 36, ${0.3 * textGlowIntensity}), 0 0 ${60 * textGlowIntensity}px rgba(238, 49, 36, ${0.2 * textGlowIntensity}), 0 0 ${80 * textGlowIntensity}px rgba(255, 107, 53, ${0.3 * textGlowIntensity})`
-                }}
-                animate={{
-                  scale: [1, 1.01, 1],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  ease: "easeInOut",
-                  delay: 0.6
-                }}
-              >
-                Reconnaissance.
-              </motion.h2>
-            </motion.div>
-
-            {/* CTA Button */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="pt-8"
-            >
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-3 px-10 py-4 bg-transparent border-2 border-white rounded-full font-semibold text-white hover:bg-white hover:text-[#ee3124] transition-all duration-300 uppercase tracking-wider text-sm"
-              >
-                Contact Us
-              </Link>
-            </motion.div>
-          </div>
+        <div className="relative z-10 h-full flex flex-col justify-end items-center pb-24">
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="text-6xl md:text-8xl font-bold tracking-tight text-center mb-6 text-gray-900"
+          >
+            RESOLUTE ISR
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.8 }}
+            className="text-xl md:text-2xl text-gray-700 tracking-widest"
+          >
+            INTELLIGENCE. SURVEILLANCE. RECONNAISSANCE.
+          </motion.p>
+          
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5, duration: 1 }}
+            className="absolute bottom-8 animate-bounce text-gray-900"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </motion.div>
         </div>
       </section>
 
