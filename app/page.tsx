@@ -152,7 +152,7 @@ export default function Home() {
           muted
           playsInline
         >
-          <source src="/Consolidated video Kenneth Burger.mp4" type="video/mp4" />
+          <source src="https://github.com/aMarketology/Drone-Gov/releases/download/1.00/Consolidated.video.Kenneth.Burger.mp4" type="video/mp4" />
         </video>
       </section>
 
