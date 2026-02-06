@@ -3,22 +3,22 @@ import { organizationSchema, servicesSchema, reviewSchema } from '@/lib/schema'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Resolute ISR | Intelligence, Surveillance & Reconnaissance',
-  description: 'Original equipment manufacturer of the Resolute Eagle UAS platform. Superior capabilities, advanced technology, and runway-independent operations for ISR missions.',
-  keywords: 'ISR, intelligence surveillance reconnaissance, UAS, unmanned aerial systems, VTOL, fixed wing, drone, Resolute Eagle, military drone, tactical ISR',
+  title: 'Resolute ISR | Superior Intelligence, Surveillance & Reconnaissance',
+  description: 'Resolute ISR delivers superior UAS platforms and ISR capabilities. Original manufacturer of the Resolute Eagle with runway independence, advanced sensors, and mission-critical technology for land and sea operations.',
+  keywords: 'ISR, intelligence surveillance reconnaissance, UAS, unmanned aerial systems, Resolute Eagle, drone technology, VTOL, runway independent, aerial intelligence, C4ISR, military drones, defense contractors',
   metadataBase: new URL('https://resoluteisr.com'),
   openGraph: {
     type: 'website',
     url: 'https://resoluteisr.com',
-    title: 'Resolute ISR | Intelligence, Surveillance & Reconnaissance',
-    description: 'Original equipment manufacturer of the Resolute Eagle UAS platform with superior capabilities and advanced technology.',
+    title: 'Resolute ISR | Superior ISR Capabilities',
+    description: 'Original manufacturer of the Resolute Eagle UAS platform. Superior capabilities and advanced technology for Intelligence, Surveillance, and Reconnaissance missions.',
     siteName: 'Resolute ISR',
     locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Resolute ISR',
-    description: 'Intelligence, Surveillance & Reconnaissance - Superior UAS Capabilities',
+    description: 'Superior Intelligence, Surveillance & Reconnaissance Capabilities',
   },
   robots: {
     index: true,
@@ -66,7 +66,7 @@ export default function RootLayout({
         {/* Google Search Console Verification */}
         <meta name="google-site-verification" content="your-google-verification" />
         {/* Additional Meta Tags */}
-        <meta name="theme-color" content="#ff8c00" />
+        <meta name="theme-color" content="rgba(238, 49, 36, 0.75)" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </head>
