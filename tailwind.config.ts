@@ -9,11 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: '#ee3124',      // Resolute ISR Red
-        primaryHover: '#d12b1f', // Darker red on hover
-        dark: '#323232',         // Resolute ISR Dark Gray
-        darkAlt: '#414042',      // Resolute ISR Alternative Dark
-        light: '#f2f2f2',        // Resolute ISR Off-White
+        primary: '#ff8c00',
+        dark: '#1a1a1a',
+        darkAlt: '#2d2d2d',
+        light: '#f8f9fa',
       },
     },
   },

@@ -1,7 +1,7 @@
-# Resolute ISR Website
+# Tampa Bay Concrete Coatings Website
 
 ## Project Overview
-A modern Next.js 13+ website built with React and TypeScript for Resolute ISR - Intelligence, Surveillance & Reconnaissance solutions featuring the Resolute Eagle UAS platform.
+A modern Next.js 13+ website built with React and TypeScript for Tampa Bay Concrete Coatings - a premier concrete coating company serving Florida.
 
 ## Tech Stack
 - **Framework**: Next.js 14
@@ -17,7 +17,7 @@ app/
 ├── globals.css               # Global Tailwind styles
 ├── components/
 │   ├── Navigation.tsx        # Header with responsive menu
-│   └── Footer.tsx            # Footer with links and contact info
+│   └── Footer.tsx            # Footer with links and social
 ├── services/
 │   └── page.tsx              # Services detail page
 ├── contact/
@@ -36,29 +36,18 @@ public/
 ## Pages
 
 ### Homepage (`/`)
-- Hero section highlighting Intelligence, Surveillance, Reconnaissance
-- Resolute Eagle UAS specifications (18.2 ft wingspan, 300 lbs MTOW, 33 Hp engine, VTOL capability)
-- Three main capability cards:
-  - Wingspan & Specifications
-  - Payload Capacity (2,500W total power, 1,842 cubic in fuselage)
-  - Runway Independence (VTOL & Fixed Wing)
-- Company information about OEM capabilities
-- Contact information: 855-880-2233, 4100 Lambert Drive, Howell, MI 48855
-- CTA for downloading capabilities briefing
-
-### About (`/about`)
-- Company mission and ISR philosophy
-- Resolute Eagle UAS platform details
-- Design to deployment capabilities
-- Why choose Resolute ISR
+- Hero section with CTA buttons
+- About section
+- Services overview (Epoxy Garage Floors, Metallic Resin Floors, Concrete Polishing)
+- Service areas list (Tampa Bay & Surrounding Areas)
+- Contact information: (727) 743-7242
+- Image gallery
+- Final CTA
 
 ### Services (`/services`)
-- Detailed UAS specifications and capabilities
-
-### Contact (`/contact`)
-- Contact form
-- Corporate headquarters information
-- Phone: 855-880-2233
+- Detailed service descriptions:
+  - Epoxy Garage Floors
+  - Metallic Resin Floors
   - Concrete Polishing
   - Metallic Resin Floors
   - Concrete Polishing
