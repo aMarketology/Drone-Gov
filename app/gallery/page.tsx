@@ -185,7 +185,10 @@ export default function Gallery() {
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link
-                href="#"
+                href="/R-ISR-Data-Sheet-1.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                download
                 className="inline-flex items-center justify-center gap-3 px-8 py-3 bg-[#ee3124] rounded-full font-semibold text-white hover:bg-[#d12b1f] transition-all duration-300 uppercase tracking-wider text-sm"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">

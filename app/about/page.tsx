@@ -42,14 +42,14 @@ export default function About() {
             >
               <div className="w-16 h-1 bg-[#ee3124] mb-6"></div>
               <h2 className="text-4xl font-light text-[#414042] mb-6">
-                What is a UAS?
+                Resolute Eagle
               </h2>
               <div className="space-y-4 text-lg text-[#414042] leading-relaxed">
                 <p>
-                  The technical name is <strong>Unmanned Air System, or UAS</strong>. This includes the unmanned aircraft that flies without a pilot on board and the operation is from the ground. Generally, only the media refers to this technology as a Drone. The user may refer to it as Remotely Piloted Aircraft System, or RPAS. The term UAS is more accurate and appropriate.
+                  The Resolute Eagle is a runway-independent Unmanned Aircraft System engineered for expeditionary Intelligence, Surveillance, and Reconnaissance operations across land and maritime domains. Designed and manufactured by Resolute ISR, the platform integrates advanced sensor payloads, secure communications architecture, and modular mission systems to deliver persistent, decision-quality intelligence in austere environments.
                 </p>
                 <p>
-                  UAS technology represents a revolutionary approach to aerial intelligence gathering, surveillance operations, and reconnaissance missions. These sophisticated systems combine cutting-edge aviation technology with advanced sensor packages and real-time data transmission capabilities.
+                  Available in both fixed-wing and VTOL configurations, the Resolute Eagle provides above-class payload capacity, mission adaptability, and operational reliability where infrastructure is limited and access is constrained. Built on disciplined engineering and operational experience, the system is purpose-built to extend reach, enhance situational awareness, and support mission success at the tactical edge.
                 </p>
               </div>
             </motion.div>
@@ -87,10 +87,10 @@ export default function About() {
               Our Mission
             </h2>
             <p className="text-xl text-[#414042] leading-relaxed mb-8">
-              Resolute ISR is dedicated to delivering superior Intelligence, Surveillance, and Reconnaissance capabilities through innovative UAS platforms and mission-critical technology solutions. We keep the warfighter safe and provide crucial information at critical times.
+              To deliver reliable, mission-adaptable Intelligence, Surveillance, and Reconnaissance capabilities that extend operational reach, enhance situational awareness, and provide decision-quality intelligence in complex and austere environments.
             </p>
             <p className="text-lg text-[#414042] leading-relaxed">
-              As the original equipment manufacturer of the Resolute Eagle, we combine decades of aviation expertise with cutting-edge technology to create UAS platforms that are runway independent, mission adaptable, and superior in their class.
+              We exist to equip operators with the tools and information required to act decisively, reduce risk, and achieve mission success when and where it matters most.
             </p>
           </motion.div>
         </div>
@@ -294,11 +294,11 @@ export default function About() {
                 className="bg-[#f2f2f2] p-8 rounded-lg"
               >
                 <h3 className="text-xl font-bold text-[#414042] mb-4">
-                  <a href="https://skylineprecisioncorp.com/" target="_blank" rel="noopener noreferrer" className="text-[#ee3124] hover:text-red-700 transition">
-                    Skyline Precision
+                  <a href="https://xrdi.com/" target="_blank" rel="noopener noreferrer" className="text-[#ee3124] hover:text-red-700 transition">
+                    XRDi
                   </a>
                 </h3>
-                <p className="text-[#414042]">Precision Manufacturing</p>
+                <p className="text-[#414042]">Advanced Technology Solutions</p>
               </motion.div>
             </div>
           </motion.div>

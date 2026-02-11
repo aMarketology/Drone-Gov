@@ -165,10 +165,7 @@ export default function Home() {
               
               <div className="space-y-6 text-lg text-[#414042] leading-relaxed">
                 <p>
-                  Intelligence Surveillance and Reconnaissance is more than simply the collection of data, it is also the art of analysis, the accuracy in data management and even critical real time decision making that leads to successful operations in the field and value to the end user. Resolute ISR is known for their superior capabilities and their use and integration of mission essential technologies that greatly expand the value and accuracy of data collected. From design and development to building and manufacturing, the Resolute ISR team fosters the latest technology and skilled expertise needed to go the distance on any mission.
-                </p>
-                <p>
-                  We are the original equipment manufacturer of the Resolute Eagle, a UAS platform in many ways superior to other Unmanned Aerial Systems in its class. The Resolute Eagle offers unique features and capabilities necessary for today's missions such as Runway Independence. Both Standard fixed wing and VTOL (Vertical takeoff and Landing) platforms are fully runway independent, this feature alone along with a larger than industry average payload capability offer the end user the soaring edge needed for successful missions on Land or at Sea.
+                  Resolute ISR delivers mission-focused Intelligence, Surveillance, and Reconnaissance capabilities engineered for operational reliability in austere and expeditionary environments. As the original manufacturer of the Resolute Eagle VTOL fixed-wing UAS, we provide battle-tested solutions optimized for land and shipboard operations where precision, endurance, and rapid deployment define mission success.
                 </p>
               </div>
             </div>
@@ -195,7 +192,10 @@ export default function Home() {
                   We build a capability that keeps the war fighter safe and provide crucial information at critical times.
                 </p>
                 <Link
-                  href="#"
+                  href="/R-ISR-Data-Sheet-1.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download
                   className="inline-flex items-center justify-center gap-3 px-8 py-3 bg-[#ee3124] rounded-full font-semibold text-white hover:bg-[#d12b1f] transition-all duration-300 uppercase tracking-wider text-sm"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -250,7 +250,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-start gap-4">
                   <span className="font-semibold min-w-[200px]">Empty Weight:</span>
-                  <span>215 lbs. (Includes EO/IR/LRF/CRP)</span>
+                  <span>215 lbs.</span>
                 </div>
                 <div className="flex items-start gap-4">
                   <span className="font-semibold min-w-[200px]">Max. Take-Off Weight (MTOW):</span>
@@ -270,7 +270,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-start gap-4">
                   <span className="font-semibold min-w-[200px]">Wing Hard Points:</span>
-                  <span>One (1) set of hard points, a total of 27 lbs. per wing for payloads</span>
+                  <span>Four hard points, 2 under each wing</span>
                 </div>
               </div>
 
