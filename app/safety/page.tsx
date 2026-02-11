@@ -203,62 +203,6 @@ export default function Safety() {
         </div>
       </section>
 
-      {/* Safety Performance Stats */}
-      <section className="py-20 bg-[#414042]">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <div className="w-16 h-1 bg-[#ee3124] mx-auto mb-8"></div>
-            <h2 className="text-4xl font-light text-white mb-6">
-              Safety Performance
-            </h2>
-            <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-              Our commitment to safety excellence is reflected in our operational performance
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="text-center"
-            >
-              <div className="text-5xl font-bold text-[#ee3124] mb-4">99.9%</div>
-              <p className="text-xl text-white">Mission Success Rate</p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="text-center"
-            >
-              <div className="text-5xl font-bold text-[#ee3124] mb-4">Zero</div>
-              <p className="text-xl text-white">Preventable Incidents</p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="text-center"
-            >
-              <div className="text-5xl font-bold text-[#ee3124] mb-4">100%</div>
-              <p className="text-xl text-white">Regulatory Compliance</p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
       {/* Safety Culture */}
       <section className="py-20 bg-[#f2f2f2]">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">

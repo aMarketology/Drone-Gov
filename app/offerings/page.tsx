@@ -20,9 +20,9 @@ export default function Offerings() {
       features: [
         'Fixed-wing and VTOL configurations',
         'Runway independent operations',
-        'Group 3 flight clearance',
+        'Group 4 performance',
         'Extended endurance capabilities',
-        'Land and sea deployment ready'
+        'Land and sea operations'
       ]
     },
     {
@@ -51,13 +51,13 @@ export default function Offerings() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
         </svg>
       ),
-      description: 'State-of-the-art sensor packages including EO/IR, laser designators, and communications systems.',
+      description: 'Integrated multi-sensor payloads, secure networking, and edge processing capabilities designed for distributed ISR operations.',
       features: [
-        'TASE400 laser designator integration',
-        'MPU5 networking technology',
-        'Multi-spectral imaging systems',
-        'Real-time video transmission',
-        'Customizable sensor payloads'
+        'pLEO SATCOM connectivity',
+        'Warden Optical Radar integration',
+        'Secure web-based payload viewing',
+        'Silvus MANET networking nodes',
+        'Onboard edge computing architecture'
       ]
     },
     {
@@ -198,7 +198,10 @@ export default function Offerings() {
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link
-                href="#"
+                href="/R-ISR-Data-Sheet-1.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                download
                 className="inline-flex items-center justify-center gap-3 px-8 py-3 bg-[#ee3124] rounded-full font-semibold text-white hover:bg-[#d12b1f] transition-all duration-300 uppercase tracking-wider text-sm"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
