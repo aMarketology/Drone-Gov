@@ -163,9 +163,11 @@ export default function Footer() {
               <li className="text-gray-400 text-sm pt-2">
                 <p className="text-white font-semibold mb-1">Part of Heligroup Holdings</p>
                 <div className="flex flex-wrap gap-2 text-xs">
-                  <a href="https://helimaxaviation.net/" target="_blank" rel="noopener noreferrer" className="text-[#ee3124] hover:text-red-600">Helimax Aviation</a>
+                  <a href="https://helimaxaviation.com/" target="_blank" rel="noopener noreferrer" className="text-[#ee3124] hover:text-red-600">Helimax Aviation</a>
                   <span>•</span>
-                  <a href="https://skylineprecisioncorp.com/" target="_blank" rel="noopener noreferrer" className="text-[#ee3124] hover:text-red-600">Skyline Precision</a>
+                  <a href="https://chiaviation.com/" target="_blank" rel="noopener noreferrer" className="text-[#ee3124] hover:text-red-600">CHI Aviation</a>
+                  <span>•</span>
+                  <a href="https://xrdi.com/" target="_blank" rel="noopener noreferrer" className="text-[#ee3124] hover:text-red-600">XRDI</a>
                 </div>
               </li>
             </ul>
