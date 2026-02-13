@@ -165,6 +165,9 @@ export default function Home() {
               
               <div className="space-y-6 text-lg text-[#414042] leading-relaxed">
                 <p>
+                  As the original equipment manufacturer of the Resolute Eagle, Resolute ISR delivers a runway-independent Unmanned Aircraft System engineered for expeditionary land and maritime operations. The platform provides Group 4 performance, modular mission architecture, and integrated multi-sensor and SATCOM capabilities. Purpose-built for distributed operations in infrastructure-limited environments, the Resolute Eagle delivers persistent, decision-quality intelligence at the tactical edge.
+                </p>
+                <p>
                   Resolute ISR delivers mission-focused Intelligence, Surveillance, and Reconnaissance capabilities engineered for operational reliability in austere and expeditionary environments. As the original manufacturer of the Resolute Eagle VTOL fixed-wing UAS, we provide battle-tested solutions optimized for land and shipboard operations where precision, endurance, and rapid deployment define mission success.
                 </p>
               </div>
@@ -192,7 +195,7 @@ export default function Home() {
                   We build a capability that keeps the war fighter safe and provide crucial information at critical times.
                 </p>
                 <Link
-                  href="/R-ISR-Data-Sheet-1.pdf"
+                  href="/Resolute Eagle Fixed Wing Specificatons.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   download
@@ -282,12 +285,13 @@ export default function Home() {
                   Explore Offerings
                 </Link>
                 <a
-                  href="https://bcbsm.sapphiremrfhub.com/tocs/current/heligroup_holdings_inc"
+                  href="/OV-1.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
+                  download
                   className="inline-flex items-center justify-center gap-3 px-10 py-4 bg-transparent border-2 border-[#ee3124] rounded-full font-semibold text-[#ee3124] hover:bg-[#ee3124] hover:text-white transition-all duration-300 uppercase tracking-wider text-sm whitespace-nowrap"
                 >
-                  View Machine-Readable Files
+                  View OV-1
                 </a>
               </div>
             </div>
@@ -315,7 +319,7 @@ export default function Home() {
                 </h3>
                 <div className="flex flex-wrap items-center gap-3 text-base">
                   <a 
-                    href="https://helimaxaviation.net/" 
+                    href="https://helimaxaviation.com/" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="text-[#ee3124] hover:text-[#d12b1f] transition font-medium"

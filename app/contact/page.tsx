@@ -18,6 +18,8 @@ export default function Contact() {
     message: ''
   })
   const [submitted, setSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState('')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
@@ -29,19 +31,38 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // TODO: Send form data to server
-    console.log('Form submitted:', formData)
-    setSubmitted(true)
-    setFormData({ 
-      inquiryType: '',
-      companyName: '',
-      companyAddress: '',
-      name: '', 
-      email: '', 
-      phone: '', 
-      message: '' 
-    })
-    setTimeout(() => setSubmitted(false), 5000)
+    setIsSubmitting(true)
+    setError('')
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to send message')
+      }
+
+      setSubmitted(true)
+      setFormData({ 
+        inquiryType: '',
+        companyName: '',
+        companyAddress: '',
+        name: '', 
+        email: '', 
+        phone: '', 
+        message: '' 
+      })
+      setTimeout(() => setSubmitted(false), 5000)
+    } catch (err) {
+      setError('Failed to send message. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -90,6 +111,12 @@ export default function Contact() {
               {submitted && (
                 <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
                   <p className="text-green-800 font-semibold">Thank you! Your message has been sent successfully.</p>
+                </div>
+              )}
+
+              {error && (
+                <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                  <p className="text-red-800 font-semibold">{error}</p>
                 </div>
               )}
 
@@ -212,9 +239,10 @@ export default function Contact() {
                 <div>
                   <button
                     type="submit"
-                    className="w-full px-10 py-4 bg-[#ee3124] rounded-full font-semibold text-white hover:bg-[#d12b1f] transition-all duration-300 uppercase tracking-wider text-sm"
+                    disabled={isSubmitting}
+                    className="w-full px-10 py-4 bg-[#ee3124] rounded-full font-semibold text-white hover:bg-[#d12b1f] transition-all duration-300 uppercase tracking-wider text-sm disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Send Message
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
                   </button>
                 </div>
 
