@@ -7,6 +7,77 @@ import Navigation from '../components/Navigation'
 import Footer from '../components/Footer'
 import { useState } from 'react'
 
+function NewsletterForm() {
+  const [email, setEmail] = useState('')
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [message, setMessage] = useState('')
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setStatus('loading')
+    
+    try {
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      })
+
+      const data = await response.json()
+      
+      if (response.ok) {
+        setStatus('success')
+        setMessage('Thank you for subscribing!')
+        setEmail('')
+      } else {
+        setStatus('error')
+        setMessage(data.error || 'Failed to subscribe')
+      }
+    } catch (error) {
+      setStatus('error')
+      setMessage('Failed to subscribe. Please try again.')
+    }
+
+    setTimeout(() => {
+      setStatus('idle')
+      setMessage('')
+    }, 5000)
+  }
+
+  return (
+    <>
+      {status === 'success' && (
+        <div className="mb-4 p-4 bg-green-50 border border-green-200 rounded-lg max-w-2xl mx-auto">
+          <p className="text-green-800 font-semibold">{message}</p>
+        </div>
+      )}
+      {status === 'error' && (
+        <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg max-w-2xl mx-auto">
+          <p className="text-red-800 font-semibold">{message}</p>
+        </div>
+      )}
+      <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto">
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Enter your email address"
+          required
+          disabled={status === 'loading'}
+          className="flex-1 px-6 py-4 rounded-full border-2 border-gray-300 focus:border-[#ee3124] focus:outline-none text-[#414042] disabled:opacity-50"
+        />
+        <button
+          type="submit"
+          disabled={status === 'loading'}
+          className="px-8 py-4 bg-[#ee3124] text-white rounded-full font-semibold hover:bg-red-700 transition-all duration-300 whitespace-nowrap disabled:opacity-50"
+        >
+          {status === 'loading' ? 'Subscribing...' : 'Subscribe Now'}
+        </button>
+      </form>
+    </>
+  )
+}
+
 export default function News() {
   const [selectedCategory, setSelectedCategory] = useState('All')
 
@@ -14,21 +85,12 @@ export default function News() {
 
   const newsArticles = [
     {
-      id: 15,
-      title: 'Resolute Eagle integrates with Salvadoran Navy during FLEX 2025',
-      category: 'Operations',
-      date: 'May 2025',
-      excerpt: 'U.S. Naval Forces Southern Command hosted the Hybrid Fleet Campaign FLEX Event in El Salvador, demonstrating combined integration of unmanned systems including the Resolute Eagle UAS.',
-      image: '/IMG_1177 Kenneth Burger.JPG',
-      slug: 'resolute-eagle-salvadoran-navy-flex-2025'
-    },
-    {
       id: 14,
       title: 'Resolute Eagle integrates pLEO SATCOM with Baxter Aerospace and Overwatch Aero',
       category: 'Technology',
       date: 'January 2026',
       excerpt: 'Resolute ISR and pLEO SATCOM SMEs Overwatch Aero and Baxter Aerospace have equipped the Resolute Eagle UAS with a Proliferated Low Earth Orbit SATCOM solution.',
-      image: '/IMG_1198 Kenneth Burger.JPG',
+      image: '/pexels-jeshoots-4991.jpg',
       slug: 'resolute-eagle-integrates-pleo-satcom'
     },
     {
@@ -37,7 +99,7 @@ export default function News() {
       category: 'Operations',
       date: 'January 2026',
       excerpt: 'Resolute ISR participated in a demonstration in Phoenix, Arizona showcasing LOI-3 operations using KTAC 2.0 with the Resolute Eagle UAS across a Silvus mesh with pLEO-enabled C2.',
-      image: '/IMG_1173 Kenneth Burger.JPG',
+      image: '/pexels-kokorevas-5313942.jpg',
       slug: 'resolute-eagle-demonstrates-loi3-operations-ktac'
     },
     {
@@ -46,7 +108,7 @@ export default function News() {
       category: 'Technology',
       date: 'January 2026',
       excerpt: 'Resolute ISR integrated and flew The Warden payload by Arkeus on the Resolute Eagle UAS, demonstrating reliable target detection and classification in snow-covered terrain.',
-      image: '/Resolute Eagle Kenneth Burger.png',
+      image: '/pexels-magda-ehlers-pexels-7508565.jpg',
       slug: 'resolute-eagle-masters-cold-arkeus-warden-integration'
     },
     {
@@ -55,7 +117,7 @@ export default function News() {
       category: 'Contracts',
       date: 'January 2026',
       excerpt: 'Arkeus secures US contract to deploy Warden hyperspectral wide-area search sensors with the Resolute ISR, Resolute Eagle, in support of operations for U.S. Department of War.',
-      image: '/Resolute Eagle Kenneth Burger.png',
+      image: '/pexels-romy-t-197679695-19339801.jpg',
       slug: 'arkeus-resolute-isr-deliver-disruptive-isr-us-department-war'
     },
     {
@@ -64,7 +126,7 @@ export default function News() {
       category: 'Operations',
       date: 'August 2024',
       excerpt: 'Helimax Aviation, Inc. is continuing the fight against wildfires in the United States. Currently, they are operating four CH-47D Chinooks in California, Oregon, and other western states to combat devastating wildfires.',
-      image: '/IMG_1207 Kenneth Burger.JPG',
+      image: '/IMG_9700 Kenneth Burger.jpeg',
       slug: 'helimax-aviation-works-to-fight-wildfires'
     },
     {
@@ -73,7 +135,7 @@ export default function News() {
       category: 'Certifications',
       date: 'July 2024',
       excerpt: 'STERLING, Virginia – PAE ISR received a Group 3 Interim Flight Clearance for the Resolute Eagle, vertical takeoff and landing configuration, from the Naval Air Systems Command (NAVAIR), marking a significant milestone for the platform.',
-      image: '/IMG_1173 Kenneth Burger.JPG',
+      image: '/IMG_0052 Kenneth Burger.PNG',
       slug: 'pae-isrs-resolute-eagle-receives-navair-interim-flight-clearance'
     },
     {
@@ -82,8 +144,17 @@ export default function News() {
       category: 'Technology',
       date: 'June 2024',
       excerpt: 'PAE ISR has selected Persistent Systems\' MPU5 networking technology for integration into the Resolute Eagle UAS platform, enhancing communications capabilities and mission effectiveness in challenging operational environments.',
-      image: '/IMG_1198 Kenneth Burger.JPG',
+      image: '/cropped Kenneth Burger.png',
       slug: 'pae-isr-selects-persistent-systems-mpu5-for-resolute-eagle'
+    },
+    {
+      id: 15,
+      title: 'Resolute Eagle integrates with Salvadoran Navy during FLEX 2025',
+      category: 'Operations',
+      date: 'May 2025',
+      excerpt: 'U.S. Naval Forces Southern Command hosted the Hybrid Fleet Campaign FLEX Event in El Salvador, demonstrating combined integration of unmanned systems including the Resolute Eagle UAS.',
+      image: '/feb13.jpeg',
+      slug: 'resolute-eagle-salvadoran-navy-flex-2025'
     },
     {
       id: 4,
@@ -91,7 +162,7 @@ export default function News() {
       category: 'Technology',
       date: 'May 2024',
       excerpt: 'PAE ISR has selected the TASE400 laser designator system for integration with the Resolute Eagle UAS, providing advanced targeting and designation capabilities for precision operations.',
-      image: '/IMG_1199 Kenneth Burger.JPG',
+      image: '/IMG_1198 Kenneth Burger.JPG',
       slug: 'pae-isr-selects-tase400-laser-designator-for-resolute-eagle'
     },
     {
@@ -100,7 +171,7 @@ export default function News() {
       category: 'Leadership',
       date: 'April 2024',
       excerpt: 'Beth Beach discusses how PAE ISR\'s unmanned aircraft platform offers unique runway independence capabilities, setting the Resolute Eagle apart from other UAS platforms in its class.',
-      image: '/IMG_1207 Kenneth Burger.JPG',
+      image: '/IMG_1199 Kenneth Burger.JPG',
       slug: 'beth-beach-pae-isrs-unmanned-aircraft-platform-offers-runway-independence'
     },
     {
@@ -109,7 +180,7 @@ export default function News() {
       category: 'Contracts',
       date: 'March 2024',
       excerpt: 'HATTIESBURG, Mississippi – PAE ISR has been selected to provide an unmanned aircraft system for a Department of Homeland Security program that seeks to enhance border security operations along the U.S. borders.',
-      image: '/IMG_1173 Kenneth Burger.JPG',
+      image: '/IMG_1207 Kenneth Burger.JPG',
       slug: 'pae-isr-to-provide-uas-platform-for-dhs-border-security-operations'
     },
     {
@@ -118,7 +189,7 @@ export default function News() {
       category: 'Partnerships',
       date: 'February 2024',
       excerpt: 'NASA will collaborate with General Atomics\' aeronautical systems business, PAE ISR and Textron\'s Bell subsidiary on a two-year project to demonstrate unmanned aircraft systems integration into the National Airspace System.',
-      image: '/IMG_1198 Kenneth Burger.JPG',
+      image: '/IMG_1173 Kenneth Burger.JPG',
       slug: 'general-atomics-pae-isr-bell-selected-as-nasa-uas-development-demo-partners'
     },
     {
@@ -127,7 +198,7 @@ export default function News() {
       category: 'Contracts',
       date: 'January 2024',
       excerpt: 'PAE ISR has been selected to participate in the RASP-B (Rapid Acquisition of Small Platforms - Batch) programme, providing advanced UAS capabilities for critical mission requirements.',
-      image: '/IMG_1199 Kenneth Burger.JPG',
+      image: '/Resolute Eagle Kenneth Burger.png',
       slug: 'pae-isr-to-participate-in-rasp-b-programme'
     },
     {
@@ -136,7 +207,7 @@ export default function News() {
       category: 'Partnerships',
       date: 'December 2023',
       excerpt: 'Historic agreement reached between PAE ISR, the Federal Aviation Administration, and NASA to advance safe integration of unmanned aircraft systems into the national airspace.',
-      image: '/IMG_1207 Kenneth Burger.JPG',
+      image: '/IMG_1177 Kenneth Burger.JPG',
       slug: 'drone-maker-faa-nasa-reach-agreement'
     },
     {
@@ -145,7 +216,7 @@ export default function News() {
       category: 'Operations',
       date: 'November 2023',
       excerpt: 'The Resolute Eagle UAS successfully demonstrated advanced intelligence, surveillance, and reconnaissance capabilities during recent field exercises, showcasing its runway independence and superior sensor integration.',
-      image: '/IMG_1173 Kenneth Burger.JPG',
+      image: '/resolute-logo.png',
       slug: 'resolute-eagle-demonstrates-advanced-isr-capabilities'
     }
   ]
@@ -273,19 +344,7 @@ export default function News() {
               Subscribe to our newsletter for the latest news, updates, and insights from Resolute ISR
             </p>
             
-            <form className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email address"
-                className="flex-1 px-6 py-4 rounded-full border-2 border-gray-300 focus:border-[#ee3124] focus:outline-none text-[#414042]"
-              />
-              <button
-                type="submit"
-                className="px-8 py-4 bg-[#ee3124] text-white rounded-full font-semibold hover:bg-red-700 transition-all duration-300 whitespace-nowrap"
-              >
-                Subscribe Now
-              </button>
-            </form>
+            <NewsletterForm />
           </motion.div>
         </div>
       </section>
