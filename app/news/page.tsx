@@ -90,7 +90,7 @@ export default function News() {
       category: 'Technology',
       date: 'January 2026',
       excerpt: 'Resolute ISR and pLEO SATCOM SMEs Overwatch Aero and Baxter Aerospace have equipped the Resolute Eagle UAS with a Proliferated Low Earth Orbit SATCOM solution.',
-      image: '/pexels-jeshoots-4991.jpg',
+      image: '/1755911117674.jpeg',
       slug: 'resolute-eagle-integrates-pleo-satcom'
     },
     {
@@ -99,7 +99,7 @@ export default function News() {
       category: 'Operations',
       date: 'January 2026',
       excerpt: 'Resolute ISR participated in a demonstration in Phoenix, Arizona showcasing LOI-3 operations using KTAC 2.0 with the Resolute Eagle UAS across a Silvus mesh with pLEO-enabled C2.',
-      image: '/pexels-kokorevas-5313942.jpg',
+      image: '/Demo1 Kenneth Burger.png',
       slug: 'resolute-eagle-demonstrates-loi3-operations-ktac'
     },
     {
@@ -108,7 +108,7 @@ export default function News() {
       category: 'Technology',
       date: 'January 2026',
       excerpt: 'Resolute ISR integrated and flew The Warden payload by Arkeus on the Resolute Eagle UAS, demonstrating reliable target detection and classification in snow-covered terrain.',
-      image: '/pexels-magda-ehlers-pexels-7508565.jpg',
+      image: '/IMG_0053 (1) Kenneth Burger.PNG',
       slug: 'resolute-eagle-masters-cold-arkeus-warden-integration'
     },
     {
