@@ -198,7 +198,7 @@ export default function Offerings() {
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link
-                href="/R-ISR-Data-Sheet-1.pdf"
+                href="/Resolute Eagle Fixed Wing Specificatons.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 download
@@ -245,7 +245,7 @@ export default function Offerings() {
               </h3>
               <div className="flex flex-wrap items-center gap-3 text-base">
                 <a 
-                  href="https://helimaxaviation.net/" 
+                  href="https://helimaxaviation.com/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-[#ee3124] hover:text-[#d12b1f] transition font-medium"
@@ -254,12 +254,21 @@ export default function Offerings() {
                 </a>
                 <span className="text-gray-400">•</span>
                 <a 
-                  href="https://skylineprecisioncorp.com/" 
+                  href="https://chiaviation.com/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-[#ee3124] hover:text-[#d12b1f] transition font-medium"
                 >
-                  Skyline Precision Corporation
+                  CHI Aviation
+                </a>
+                <span className="text-gray-400">•</span>
+                <a 
+                  href="https://xrdi.com/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-[#ee3124] hover:text-[#d12b1f] transition font-medium"
+                >
+                  XRDI
                 </a>
               </div>
             </div>

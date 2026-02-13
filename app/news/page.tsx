@@ -14,6 +14,51 @@ export default function News() {
 
   const newsArticles = [
     {
+      id: 15,
+      title: 'Resolute Eagle integrates with Salvadoran Navy during FLEX 2025',
+      category: 'Operations',
+      date: 'May 2025',
+      excerpt: 'U.S. Naval Forces Southern Command hosted the Hybrid Fleet Campaign FLEX Event in El Salvador, demonstrating combined integration of unmanned systems including the Resolute Eagle UAS.',
+      image: '/IMG_1177 Kenneth Burger.JPG',
+      slug: 'resolute-eagle-salvadoran-navy-flex-2025'
+    },
+    {
+      id: 14,
+      title: 'Resolute Eagle integrates pLEO SATCOM with Baxter Aerospace and Overwatch Aero',
+      category: 'Technology',
+      date: 'January 2026',
+      excerpt: 'Resolute ISR and pLEO SATCOM SMEs Overwatch Aero and Baxter Aerospace have equipped the Resolute Eagle UAS with a Proliferated Low Earth Orbit SATCOM solution.',
+      image: '/IMG_1198 Kenneth Burger.JPG',
+      slug: 'resolute-eagle-integrates-pleo-satcom'
+    },
+    {
+      id: 13,
+      title: 'Resolute Eagle demonstrates LOI3 operations with KTAC2.0 from Kutta Technologies',
+      category: 'Operations',
+      date: 'January 2026',
+      excerpt: 'Resolute ISR participated in a demonstration in Phoenix, Arizona showcasing LOI-3 operations using KTAC 2.0 with the Resolute Eagle UAS across a Silvus mesh with pLEO-enabled C2.',
+      image: '/IMG_1173 Kenneth Burger.JPG',
+      slug: 'resolute-eagle-demonstrates-loi3-operations-ktac'
+    },
+    {
+      id: 12,
+      title: 'Resolute Eagle Masters the Cold: Successful Integration of Arkeus Warden Payload',
+      category: 'Technology',
+      date: 'January 2026',
+      excerpt: 'Resolute ISR integrated and flew The Warden payload by Arkeus on the Resolute Eagle UAS, demonstrating reliable target detection and classification in snow-covered terrain.',
+      image: '/Resolute Eagle Kenneth Burger.png',
+      slug: 'resolute-eagle-masters-cold-arkeus-warden-integration'
+    },
+    {
+      id: 11,
+      title: 'Arkeus and Resolute ISR to deliver disruptive ISR to U.S. Department of War',
+      category: 'Contracts',
+      date: 'January 2026',
+      excerpt: 'Arkeus secures US contract to deploy Warden hyperspectral wide-area search sensors with the Resolute ISR, Resolute Eagle, in support of operations for U.S. Department of War.',
+      image: '/Resolute Eagle Kenneth Burger.png',
+      slug: 'arkeus-resolute-isr-deliver-disruptive-isr-us-department-war'
+    },
+    {
       id: 1,
       title: 'Helimax Aviation Works To Fight Wildfires in the US',
       category: 'Operations',
