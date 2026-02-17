@@ -6,14 +6,15 @@ const config: Config = {
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        primary: '#ee3124',      // Resolute ISR Red
-        primaryHover: '#d12b1f', // Darker red on hover
-        dark: '#323232',         // Resolute ISR Dark Gray
-        darkAlt: '#414042',      // Resolute ISR Alternative Dark
-        light: '#f2f2f2',        // Resolute ISR Off-White
+        primary: '#dc2626',      // Red-600
+        primaryHover: '#991b1b', // Red-800 
+        dark: '#1f2937',         // Gray-800
+        darkAlt: '#111827',      // Gray-900
+        light: '#f9fafb',        // Gray-50
       },
     },
   },

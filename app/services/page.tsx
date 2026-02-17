@@ -2,225 +2,225 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import Image from 'next/image'
 import Navigation from '../components/Navigation'
 import Footer from '../components/Footer'
+import DarkModeToggle from '../components/DarkModeToggle'
 
 export default function Services() {
+  const services = [
+    {
+      icon: '📦',
+      title: 'Full Truckload (FTL)',
+      description: 'Dedicated truck capacity for your shipment with direct routing from origin to destination. Perfect for large shipments that fill an entire trailer.',
+      features: [
+        'Direct point-to-point delivery with no stops',
+        'Reduced risk of damage from less handling',
+        'Cost-effective for large shipments (10,000+ lbs)',
+        'Flexible scheduling to meet your timeline',
+        'Priority handling and faster transit times',
+        'Ideal for time-sensitive freight'
+      ],
+      color: 'from-red-600 to-red-700'
+    },
+    {
+      icon: '📊',
+      title: 'Less Than Truckload (LTL)',
+      description: 'Cost-effective solution for smaller shipments that don\'t require a full trailer. Share trailer space and pay only for what you use.',
+      features: [
+        'Pay only for the space your freight occupies',
+        'Ideal for shipments from 150 to 15,000 pounds',
+        'Environmentally friendly shared transportation',
+        'Access to nationwide LTL carrier network',
+        'Consolidated shipping for efficiency',
+        'Reliable delivery standards maintained'
+      ],
+      color: 'from-gray-800 to-gray-900'
+    },
+    {
+      icon: '⚡',
+      title: 'Expedited Shipping',
+      description: 'Time-critical delivery solutions with 24/7 operations. When every minute counts, our expedited service ensures your freight arrives on time.',
+      features: [
+        'Guaranteed delivery windows',
+        'Direct routes with priority handling',
+        '24/7 dispatch and customer support',
+        'Real-time GPS tracking and updates',
+        'Team drivers for faster cross-country runs',
+        'Emergency and rush order capabilities'
+      ],
+      color: 'from-red-700 to-red-800'
+    },
+    {
+      icon: '❄️',
+      title: 'Temperature Controlled',
+      description: 'Refrigerated and climate-controlled transportation for sensitive cargo. Maintain product integrity from pickup to delivery.',
+      features: [
+        'Reefer trailers with precise temperature control',
+        'Frozen, chilled, and ambient options',
+        'Continuous temperature monitoring',
+        'Food-grade and pharmaceutical certified',
+        'Compliance with FDA regulations',
+        'Backup systems for reliability'
+      ],
+      color: 'from-gray-700 to-gray-800'
+    },
+    {
+      icon: '⚠️',
+      title: 'Hazmat Transport',
+      description: 'Certified hazardous materials transportation with fully trained drivers and compliant equipment. Safety is our top priority.',
+      features: [
+        'DOT and HAZMAT certified carriers',
+        'Specialized equipment and containers',
+        'Trained and licensed drivers',
+        'Complete documentation and permits',
+        'Insurance coverage for hazmat loads',
+        'Emergency response protocols'
+      ],
+      color: 'from-red-600 to-red-700'
+    },
+    {
+      icon: '🏗️',
+      title: 'Heavy Haul & Oversized',
+      description: 'Specialized equipment and expertise for oversized loads, heavy machinery, and equipment transport. We handle what others can\'t.',
+      features: [
+        'Flatbed, step deck, and RGN trailers',
+        'Over-dimensional load permits',
+        'Route surveys and pilot cars',
+        'Heavy equipment and machinery transport',
+        'Construction and industrial freight',
+        'Expert project management'
+      ],
+      color: 'from-gray-800 to-gray-900'
+    },
+    {
+      icon: '🎯',
+      title: 'White Glove Service',
+      description: 'Premium handling for high-value and delicate items. Inside delivery, assembly, and installation services available.',
+      features: [
+        'Inside delivery and room placement',
+        'Furniture assembly and installation',
+        'Debris removal and packaging disposal',
+        'Special handling for fragile items',
+        'Appointment scheduling coordination',
+        'Premium insurance coverage'
+      ],
+      color: 'from-red-700 to-red-800'
+    },
+    {
+      icon: '🚢',
+      title: 'Intermodal Services',
+      description: 'Seamless multi-modal transportation combining truck, rail, and ocean freight for cost-effective long-distance shipping.',
+      features: [
+        'Rail and ocean freight integration',
+        'Cost savings on long-haul routes',
+        'Reduced carbon footprint',
+        'Container tracking and management',
+        'Drayage and terminal services',
+        'Import/export coordination'
+      ],
+      color: 'from-gray-700 to-gray-800'
+    }
+  ]
+
   return (
-    <div className="min-h-screen bg-[#f2f2f2]">
+    <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+      <DarkModeToggle />
       <Navigation />
 
-      {/* === HERO SECTION === */}
-      <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-[#414042]">
-        <div className="absolute inset-0">
-          <Image
-            src="/IMG_1198 Kenneth Burger.JPG"
-            alt="Resolute ISR Services"
-            fill
-            className="object-cover opacity-40"
-            priority
-          />
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-br from-gray-900 to-gray-800 py-32">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
+            backgroundSize: '40px 40px'
+          }} />
         </div>
         
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 py-24 text-center">
+        <div className="relative max-w-7xl mx-auto px-6 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-4"
+            transition={{ duration: 0.6 }}
           >
-            <h1 className="text-5xl md:text-6xl font-light text-white tracking-wide uppercase">
-              Services
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+              OUR <span className="text-red-600">SERVICES</span>
             </h1>
-            <div className="w-16 h-1 bg-[#ee3124] mx-auto"></div>
+            <div className="w-20 h-1 bg-red-600 mx-auto mb-8"></div>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Comprehensive logistics solutions tailored to meet your unique transportation needs across all 48 continental states.
+            </p>
           </motion.div>
         </div>
       </section>
 
-      {/* === MILITARY SERVICES SECTION === */}
-      <section className="relative py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="w-16 h-1 bg-[#323232] mx-auto mb-6"></div>
-            <h2 className="text-4xl md:text-5xl font-light text-[#414042] uppercase tracking-wide">
-              Military Services
-            </h2>
-          </div>
-
-          {/* Ground-Based ISR */}
-          <div className="mb-20">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
-              <div className="order-2 lg:order-1">
-                <h3 className="text-3xl font-light text-[#414042] mb-6">Ground-Based ISR</h3>
-                <p className="text-lg text-[#414042] leading-relaxed">
-                  The principal function of the intelligence, surveillance, and reconnaissance (ISR) component of command, control, communications, computers, intelligence, surveillance, and reconnaissance (C4ISR) is to find, fix, and track both friendly and hostile forces, as well as to assess damage to hostile targets in an area of interest. In addition to sensing (collection), the function includes the tasking of sensors and the integration, interpretation, and exploitation of sensed information.
-                </p>
-              </div>
-              <div className="order-1 lg:order-2 relative h-[400px]">
-                <Image
-                  src="/IMG_1173 Kenneth Burger.JPG"
-                  alt="Ground-Based ISR"
-                  fill
-                  className="object-cover rounded-lg"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Force Protection */}
-          <div className="mb-20">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
-              <div className="relative h-[400px]">
-                <Image
-                  src="/IMG_1207 Kenneth Burger.JPG"
-                  alt="Force Protection"
-                  fill
-                  className="object-cover rounded-lg"
-                />
-              </div>
-              <div>
-                <h3 className="text-3xl font-light text-[#414042] mb-6">Force Protection</h3>
-                <p className="text-lg text-[#414042] leading-relaxed">
-                  Unmanned surveillance aircraft offer a significant value to current Force Protection measures particularly in areas of mountainous terrain and maritime environments where the enemy has ample opportunity for advancement on protected establishments. By extending the range of awareness Commanders in the field have the advantage of real time information and imagery that can dramatically change the outcome of any engagement.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Anti-Piracy */}
-          <div className="mb-20">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
-              <div className="order-2 lg:order-1">
-                <h3 className="text-3xl font-light text-[#414042] mb-6">Anti-Piracy</h3>
-                <p className="text-lg text-[#414042] leading-relaxed">
-                  Contemporary maritime piracy reached its peak level in 2010, with around 445 reported incidents. The regions most likely to come under threat from pirate attacks include Indonesia, Malaysia, Nigeria and the Gulf of Aden. Strategic passages for oil transport such as Bab-el-Mandeb near Somalia, or the Strait of Malacca off the Indonesian coast have become notorious targets for maritime crime.
-                </p>
-              </div>
-              <div className="order-1 lg:order-2 relative h-[400px]">
-                <Image
-                  src="/IMG_1199 Kenneth Burger.JPG"
-                  alt="Anti-Piracy"
-                  fill
-                  className="object-cover rounded-lg"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Border Protection */}
-          <div className="mb-20">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
-              <div className="relative h-[400px]">
-                <Image
-                  src="/IMG_9700.jpeg"
-                  alt="Border Protection"
-                  fill
-                  className="object-cover rounded-lg"
-                />
-              </div>
-              <div>
-                <h3 className="text-3xl font-light text-[#414042] mb-6">Border Protection</h3>
-                <p className="text-lg text-[#414042] leading-relaxed">
-                  Mass migration has become a recent threat to international security and individual sovereignty of nations. Border control requires a variety of tools and advanced technology in order to stem the flow of illegal migration, cross border narcotics trafficking, human trafficking and the growing threats of terrorism. Persistent surveillance with UAS platforms offer enhance vision through the night, coherent change detection of common routes and automated motion detection software to help maintain targets on the move.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Pattern of Life Recognition */}
-          <div className="mb-20">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
-              <div className="order-2 lg:order-1">
-                <h3 className="text-3xl font-light text-[#414042] mb-6">Pattern of Life Recognition</h3>
-                <p className="text-lg text-[#414042] leading-relaxed">
-                  Activity-based intelligence (ABI) is an analysis methodology that rapidly integrates data from multiple sources such as FMV and HUMINT to discover relevant patterns, determine and identify change and characterize those patterns to drive collection and create decision advantage. Pattern-of-life is the specific set of behaviors and movements associated with a particular entity over a given period of time. The focus on an individual or group of individuals is the fundamental uniqueness behind pattern of life analysis and drives the need for a new set of techniques and approaches to intelligence collection.
-                </p>
-              </div>
-              <div className="order-1 lg:order-2 relative h-[400px]">
-                <Image
-                  src="/Resolute Eagle.png"
-                  alt="Pattern of Life Recognition"
-                  fill
-                  className="object-contain rounded-lg bg-white p-8"
-                />
-              </div>
-            </div>
+      {/* Services Grid */}
+      <section className="py-32 bg-gray-50 dark:bg-gray-800">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-8">
+            {services.map((service, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300"
+              >
+                <div className={`absolute inset-0 bg-gradient-to-br ${service.color}`}></div>
+                <div className="relative p-8 text-white">
+                  <div className="text-6xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                    {service.icon}
+                  </div>
+                  <h3 className="text-3xl font-bold mb-4">{service.title}</h3>
+                  <p className="text-gray-100 mb-6 leading-relaxed">{service.description}</p>
+                  <ul className="space-y-3">
+                    {service.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-start gap-3">
+                        <span className="text-red-300 mt-1 flex-shrink-0">▸</span>
+                        <span className="text-gray-100">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* === HUMANITARIAN SERVICES SECTION === */}
-      <section className="relative py-20 bg-[#f2f2f2]">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="w-16 h-1 bg-[#323232] mx-auto mb-6"></div>
-            <h2 className="text-4xl md:text-5xl font-light text-[#414042] uppercase tracking-wide">
-              Humanitarian Services
-            </h2>
-          </div>
-
-          {/* Search and Rescue */}
-          <div className="mb-20">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
-              <div className="relative h-[400px]">
-                <Image
-                  src="/IMG_1198 Kenneth Burger.JPG"
-                  alt="Search and Rescue"
-                  fill
-                  className="object-cover rounded-lg"
-                />
-              </div>
-              <div>
-                <h3 className="text-3xl font-light text-[#414042] mb-6">Search and Rescue</h3>
-                <p className="text-lg text-[#414042] leading-relaxed">
-                  Search and rescue efforts can be greatly enhanced with the use of UAS platforms equipped with Thermal imagery systems. Thermal imaging lets you see through wide swaths of wilderness and between dark or poorly illuminated spaces in a city. Time is critical on every mission and eyes in the sky can reduce search time and possibly deliver lifesaving supplies and communication equipment needed to achieve positive outcomes.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Firefighting */}
-          <div className="mb-20">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
-              <div className="order-2 lg:order-1">
-                <h3 className="text-3xl font-light text-[#414042] mb-6">Firefighting</h3>
-                <p className="text-lg text-[#414042] leading-relaxed">
-                  UAS technologies offer a tremendous leap forward in capabilities for the fire service. Not only do UAS give first responders the ability to have a bird's eye view of the scene, they also offer the potential for entirely new strategies and tactics that could change operations drastically. Examples of how UAS may be employed would include: Structural and Forestry firefighting, Disaster response, Emergency medical services and hot zone work in real time using high-resolution and thermal imaging.
-                </p>
-              </div>
-              <div className="order-1 lg:order-2 relative h-[400px]">
-                <Image
-                  src="/IMG_1173 Kenneth Burger.JPG"
-                  alt="Firefighting"
-                  fill
-                  className="object-cover rounded-lg"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* === ON TARGET SECTION === */}
-      <section className="relative py-20 bg-white text-center">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8">
-          <div className="w-16 h-1 bg-[#323232] mx-auto mb-6"></div>
-          <h2 className="text-4xl md:text-5xl font-light text-[#414042] mb-6 uppercase tracking-wide">
-            On Target, Always
-          </h2>
-          <p className="text-xl text-[#414042] mb-8 leading-relaxed">
-            We build a capability that keeps the war fighter safe and provide crucial information at critical times.
-          </p>
-          <Link
-            href="#"
-            className="inline-flex items-center justify-center gap-3 px-10 py-4 bg-[#ee3124] rounded-full font-semibold text-white hover:bg-[#d12b1f] transition-all duration-300 uppercase tracking-wider text-sm"
+      {/* CTA Section */}
+      <section className="py-32 bg-white dark:bg-gray-900">
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
           >
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
-            </svg>
-            Download Capabilities Briefing
-          </Link>
+            <h2 className="text-5xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white">
+              NEED A <span className="text-red-600">CUSTOM SOLUTION</span>?
+            </h2>
+            <div className="w-20 h-1 bg-red-600 mx-auto mb-8"></div>
+            <p className="text-xl text-gray-600 dark:text-gray-300 mb-12 leading-relaxed">
+              Every business has unique logistics needs. Our team will work with you to create<br />
+              a customized transportation solution that fits your requirements and budget.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Link 
+                href="/contact"
+                className="inline-flex items-center justify-center bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-10 text-lg tracking-wide transition-all duration-300 rounded-lg shadow-lg hover:shadow-xl hover:scale-105"
+              >
+                GET A QUOTE
+                <span className="ml-2">→</span>
+              </Link>
+              <a 
+                href="tel:1-800-555-0123"
+                className="inline-flex items-center justify-center border-2 border-gray-300 dark:border-gray-600 hover:border-red-600 text-gray-900 dark:text-gray-100 hover:text-red-600 font-bold py-4 px-10 text-lg tracking-wide transition-all duration-300 rounded-lg hover:shadow-lg"
+              >
+                📞 CALL US
+              </a>
+            </div>
+          </motion.div>
         </div>
       </section>
 
