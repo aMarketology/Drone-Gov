@@ -5,21 +5,21 @@ import { motion } from 'framer-motion'
 
 export default function Footer() {
   const services = [
-    'Resolute Eagle UAS',
-    'ISR Solutions',
-    'Mission Technology',
+    'Full Truckload (FTL)',
+    'Less Than Truckload (LTL)',
+    'Expedited Shipping',
+    'Warehousing',
+    'Specialized Freight',
   ]
 
   const quickLinks = [
     { name: 'Home', href: '/' },
     { name: 'Services', href: '/services' },
-    { name: 'Gallery', href: '/gallery' },
-    { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' },
   ]
 
   const serviceAreas = [
-    'Intelligence', 'Surveillance', 'Reconnaissance', 'Fixed Wing', 'VTOL'
+    'All 48 States', 'Coast to Coast', 'Canada', 'Mexico', 'Real-Time Tracking'
   ]
 
   return (
@@ -33,18 +33,18 @@ export default function Footer() {
               className="mb-6"
               whileHover={{ scale: 1.02 }}
             >
-              <div className="text-2xl font-bold leading-none mb-1">Resolute</div>
-              <div className="text-2xl font-bold leading-none">
-                <span className="text-#ee3124">ISR</span>
+              <div className="text-2xl font-bold leading-none mb-1">
+                <span className="text-blue-500">48</span>
               </div>
+              <div className="text-2xl font-bold leading-none">STATES</div>
             </motion.div>
             <p className="text-gray-400 mb-6 text-sm leading-relaxed">
-              Intelligence, Surveillance, and Reconnaissance solutions with superior capabilities and advanced UAS technology.
+              Your trusted third-party logistics partner, delivering excellence across America with comprehensive transportation and warehousing solutions.
             </p>
             <div className="flex gap-4">
               <motion.a
                 href="#"
-                className="w-10 h-10 bg-white/10 hover:bg-#ee3124 rounded-full flex items-center justify-center transition"
+                className="w-10 h-10 bg-white/10 hover:bg-blue-600 rounded-full flex items-center justify-center transition"
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 whileTap={{ scale: 0.9 }}
               >
@@ -54,7 +54,7 @@ export default function Footer() {
               </motion.a>
               <motion.a
                 href="#"
-                className="w-10 h-10 bg-white/10 hover:bg-#ee3124 rounded-full flex items-center justify-center transition"
+                className="w-10 h-10 bg-white/10 hover:bg-blue-600 rounded-full flex items-center justify-center transition"
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 whileTap={{ scale: 0.9 }}
               >
@@ -79,9 +79,9 @@ export default function Footer() {
                 >
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-#ee3124 transition flex items-center gap-2 group"
+                    className="text-gray-400 hover:text-blue-500 transition flex items-center gap-2 group"
                   >
-                    <span className="w-0 h-0.5 bg-#ee3124 group-hover:w-4 transition-all" />
+                    <span className="w-0 h-0.5 bg-blue-500 group-hover:w-4 transition-all" />
                     {link.name}
                   </Link>
                 </motion.li>
@@ -102,7 +102,7 @@ export default function Footer() {
                   viewport={{ once: true }}
                   className="text-gray-400 flex items-center gap-2"
                 >
-                  <svg className="w-4 h-4 text-#ee3124" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   {service}
@@ -118,26 +118,26 @@ export default function Footer() {
               <li>
                 <Link
                   href="/contact"
-                  className="text-#ee3124 hover:text-#ee3124 transition font-semibold flex items-center gap-2"
+                  className="text-blue-500 hover:text-blue-400 transition font-semibold flex items-center gap-2"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                   </svg>
-                  855-880-2233
+                  1-800-48-STATE
                 </Link>
               </li>
               <li className="text-gray-400 text-sm flex items-start gap-2">
                 <svg className="w-5 h-5 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                 </svg>
-                4100 Lambert Drive<br />Howell, MI 48855
+                Nationwide Coverage<br />Operating Across 48 States
               </li>
               <li className="text-gray-400 text-sm flex items-start gap-2">
                 <svg className="w-5 h-5 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                 </svg>
-                Mission Critical<br />
-                Operations Support
+                24/7 Customer Support<br />
+                Real-Time Tracking
               </li>
             </ul>
           </div>
@@ -157,10 +157,10 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="py-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
-          <p>&copy; 2026 Resolute ISR. All rights reserved.</p>
+          <p>&copy; 2026 48 States Logistics. All rights reserved.</p>
           <div className="flex gap-6">
-            <Link href="#" className="hover:text-#ee3124 transition">Privacy Policy</Link>
-            <Link href="#" className="hover:text-#ee3124 transition">Terms of Service</Link>
+            <Link href="#" className="hover:text-blue-500 transition">Privacy Policy</Link>
+            <Link href="#" className="hover:text-blue-500 transition">Terms of Service</Link>
           </div>
         </div>
       </div>

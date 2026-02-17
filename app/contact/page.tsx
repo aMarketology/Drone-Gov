@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Navigation from '../components/Navigation'
 import Footer from '../components/Footer'
+import DarkModeToggle from '../components/DarkModeToggle'
 import { useState } from 'react'
 
 export default function Contact() {
@@ -45,19 +46,14 @@ export default function Contact() {
   }
 
   return (
-    <div className="min-h-screen bg-[#f2f2f2]">
+    <div className="min-h-screen bg-white dark:bg-gray-900">
+      <DarkModeToggle />
       <Navigation />
 
       {/* === HERO SECTION === */}
-      <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-[#414042]">
-        <div className="absolute inset-0">
-          <Image
-            src="/IMG_1207 Kenneth Burger.JPG"
-            alt="Contact Resolute ISR"
-            fill
-            className="object-cover opacity-40"
-            priority
-          />
+      <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-900" />
         </div>
         
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 py-24 text-center">
@@ -68,11 +64,11 @@ export default function Contact() {
             className="space-y-4"
           >
             <h1 className="text-5xl md:text-6xl font-light text-white tracking-wide uppercase">
-              Contact Us
+              Get A Quote
             </h1>
-            <div className="w-16 h-1 bg-[#ee3124] mx-auto"></div>
+            <div className="w-16 h-1 bg-blue-400 mx-auto"></div>
             <p className="text-xl text-white/90 max-w-2xl mx-auto">
-              If you have any questions or concerns, please reach out to us by filling out the form below.
+              Ready to streamline your logistics? Contact us today for a customized shipping solution.
             </p>
           </motion.div>
         </div>
