@@ -6,6 +6,7 @@ import Image from 'next/image'
 import Navigation from '../components/Navigation'
 import Footer from '../components/Footer'
 import { useState } from 'react'
+import emailjs from '@emailjs/browser'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -33,29 +34,32 @@ export default function Contact() {
     e.preventDefault()
     setIsSubmitting(true)
     setError('')
-    
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      })
 
-      if (!response.ok) {
-        throw new Error('Failed to send message')
-      }
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          inquiry_type: formData.inquiryType || 'Not specified',
+          company_name: formData.companyName || 'Not provided',
+          company_address: formData.companyAddress || 'Not provided',
+          from_name: formData.name,
+          from_email: formData.email,
+          phone: formData.phone || 'Not provided',
+          message: formData.message,
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      )
 
       setSubmitted(true)
-      setFormData({ 
+      setFormData({
         inquiryType: '',
         companyName: '',
         companyAddress: '',
-        name: '', 
-        email: '', 
-        phone: '', 
-        message: '' 
+        name: '',
+        email: '',
+        phone: '',
+        message: ''
       })
       setTimeout(() => setSubmitted(false), 5000)
     } catch (err) {
