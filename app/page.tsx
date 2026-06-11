@@ -160,15 +160,12 @@ export default function Home() {
             <div className="hidden lg:block">
               <div className="w-16 h-1 bg-[#323232] mb-6"></div>
               <h2 className="text-4xl md:text-5xl font-light text-[#414042] mb-8">
-                Known for its superior capabilities and advanced technology.
+                Resolute ISR delivers the tactical air layer for persistent, decision-quality intelligence.
               </h2>
               
               <div className="space-y-6 text-lg text-[#414042] leading-relaxed">
                 <p>
-                  As the original equipment manufacturer of the Resolute Eagle, Resolute ISR delivers a runway-independent Unmanned Aircraft System engineered for expeditionary land and maritime operations. The platform provides Group 4 performance, modular mission architecture, and integrated multi-sensor and SATCOM capabilities. Purpose-built for distributed operations in infrastructure-limited environments, the Resolute Eagle delivers persistent, decision-quality intelligence at the tactical edge.
-                </p>
-                <p>
-                  Resolute ISR delivers mission-focused Intelligence, Surveillance, and Reconnaissance capabilities engineered for operational reliability in austere and expeditionary environments. As the original manufacturer of the Resolute Eagle VTOL fixed-wing UAS, we provide battle-tested solutions optimized for land and shipboard operations where precision, endurance, and rapid deployment define mission success.
+                  Resolute ISR is a tactical ISR systems company built around the Resolute Eagle UAS, a runway-independent Group 3 aircraft designed for maritime, expeditionary, homeland security, and defense missions. The company delivers more than an aircraft: it provides payload integration, operators, sustainment, communications, logistics, and mission support to generate ISR as a service. In a market moving toward layered, AI-enabled intelligence architectures, Resolute Eagle provides the tactical air node that connects sensors, communications, and decision-making at the edge.
                 </p>
               </div>
             </div>
