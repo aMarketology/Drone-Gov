@@ -40,8 +40,15 @@ next-env.d.ts
 /data/newsletter-signups.json
 
 # Large media — hosted externally (Vimeo/YouTube), never committed.
-# See .gitattributes for the same guard at the attribute level.
+# Small flight clips are intentionally re-included below (see .gitattributes);
+# they are stored as ordinary Git objects, NOT via LFS, so they cannot
+# consume the LFS quota.
 /public/new/*
+!/public/new/RE BR Launch.mp4
+!/public/new/RE BR Landing.mp4
+!/public/new/RE Item Drop.mp4
+!/public/new/FWD Look Cam Drop.mp4
+!/public/new/Trillium GCS Drop.MP4
 /public/*.mp4
 /public/*.MP4
 /public/*.mov

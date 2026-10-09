@@ -12,13 +12,14 @@ export default function Gallery() {
 
   const categories = ['All', 'ISR Systems', 'Training', 'Missions']
 
-  // All flight footage is hosted externally (Vimeo/YouTube) so that large
-  // media never enters Git — this repo is on the free LFS tier.
-  // Add `youtubeId` or `vimeoId` as each video is published. `vimeoHash` is only
-  // needed for "Unlisted" videos (share URLs of the form vimeo.com/<id>/<hash>).
-  // Cards without an ID render a neutral placeholder instead of a broken player.
+  // Flight footage. Large files are hosted externally (Vimeo/YouTube) so they
+  // never enter Git; the small clips below are served straight from /public/new.
+  // `vimeoHash` is only needed for "Unlisted" Vimeo videos (share URLs of the
+  // form vimeo.com/<id>/<hash>). Entries with no source render a neutral
+  // placeholder instead of a broken player.
   type FlightVideo = {
     title: string
+    src?: string
     vimeoId?: string
     vimeoHash?: string
     youtubeId?: string
@@ -29,12 +30,11 @@ export default function Gallery() {
     { title: 'AV-13 Flight 2 — August 2, 2026', vimeoId: '1234251285' },
     { title: 'Flight Operations — July 30', vimeoId: '1234250495' },
     { title: 'Flight Operations — July 31', vimeoId: '1234251360' },
-    { title: 'August 2, 2026 Flight' },
-    { title: 'Resolute Eagle Launch' },
-    { title: 'Resolute Eagle Landing' },
-    { title: 'Resolute Eagle Item Drop' },
-    { title: 'Forward Look Camera Drop' },
-    { title: 'Trillium GCS Drop' }
+    { title: 'Resolute Eagle Launch', src: '/new/RE BR Launch.mp4' },
+    { title: 'Resolute Eagle Landing', src: '/new/RE BR Landing.mp4' },
+    { title: 'Resolute Eagle Item Drop', src: '/new/RE Item Drop.mp4' },
+    { title: 'Forward Look Camera Drop', src: '/new/FWD Look Cam Drop.mp4' },
+    { title: 'Trillium GCS Drop', src: '/new/Trillium GCS Drop.MP4' }
   ]
 
   const galleryImages = [
@@ -138,7 +138,15 @@ export default function Gallery() {
                 viewport={{ once: true }}
                 className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
               >
-                {video.vimeoId || video.youtubeId ? (
+                {video.src ? (
+                  <video
+                    src={video.src}
+                    controls
+                    preload="metadata"
+                    playsInline
+                    className="w-full h-64 bg-black object-contain"
+                  />
+                ) : video.vimeoId || video.youtubeId ? (
                   <div className="relative w-full h-64 bg-black">
                     <iframe
                       src={

@@ -1,13 +1,13 @@
 # Auto detect text files and perform LF normalization
 * text=auto
 
-# Video and audio are hosted externally (Vimeo/YouTube) and must never be
-# committed. This repo is on the free GitHub LFS tier, and large media in
-# history exhausts it permanently. .gitignore also excludes public/new/*.
-*.mp4 -text -diff
-*.MP4 -text -diff
-*.mov -text -diff
-*.MOV -text -diff
-*.wav -text -diff
-*.WAV -text -diff
-*.pptx -text -diff
+# Video and audio must never go through Git LFS: this repo is on the free
+# GitHub LFS tier, and large media in history exhausts it permanently.
+# Large footage is hosted externally (Vimeo/YouTube) and gitignored; the few
+# small clips kept in /public/new are stored as ordinary Git objects.
+*.mp4 -text -diff -filter -merge
+*.MP4 -text -diff -filter -merge
+*.mov -text -diff -filter -merge
+*.MOV -text -diff -filter -merge
+*.wav -text -diff -filter -merge
+*.WAV -text -diff -filter -merge
