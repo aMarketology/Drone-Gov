@@ -12,27 +12,30 @@ export default function Gallery() {
 
   const categories = ['All', 'ISR Systems', 'Training', 'Missions']
 
-  // Files served from /public/new (small enough to keep in the repo)
-  const localVideos = [
-    { src: '/new/RE BR Launch.mp4', title: 'Resolute Eagle Launch' },
-    { src: '/new/RE BR Landing.mp4', title: 'Resolute Eagle Landing' },
-    { src: '/new/RE Item Drop.mp4', title: 'Resolute Eagle Item Drop' },
-    { src: '/new/FWD Look Cam Drop.mp4', title: 'Forward Look Camera Drop' },
-    { src: '/new/Trillium GCS Drop.MP4', title: 'Trillium GCS Drop' },
-    { src: '/new/August 2 2026.mp4', title: 'August 2, 2026 Flight' }
-  ]
+  // All flight footage is hosted externally (Vimeo/YouTube) so that large
+  // media never enters Git — this repo is on the free LFS tier.
+  // Add `youtubeId` or `vimeoId` as each video is published. `vimeoHash` is only
+  // needed for "Unlisted" videos (share URLs of the form vimeo.com/<id>/<hash>).
+  // Cards without an ID render a neutral placeholder instead of a broken player.
+  type FlightVideo = {
+    title: string
+    vimeoId?: string
+    vimeoHash?: string
+    youtubeId?: string
+  }
 
-  // Hosted on Vimeo — these are too large to store in Git.
-  // `vimeoId` is the number in the video URL; `hash` is only needed for
-  // "Unlisted" videos, where the share URL looks like vimeo.com/<id>/<hash>.
-  const externalVideos = [
-    { vimeoId: '1234251308', hash: '', title: 'Mexico Demo — August 5' },
-    { vimeoId: '1234251285', hash: '', title: 'AV-13 Flight 2 — August 2, 2026' },
-    { vimeoId: '1234250495', hash: '', title: 'Flight Operations — July 30' },
-    { vimeoId: '1234251360', hash: '', title: 'Flight Operations — July 31' }
+  const videos: FlightVideo[] = [
+    { title: 'Mexico Demo — August 5', vimeoId: '1234251308' },
+    { title: 'AV-13 Flight 2 — August 2, 2026', vimeoId: '1234251285' },
+    { title: 'Flight Operations — July 30', vimeoId: '1234250495' },
+    { title: 'Flight Operations — July 31', vimeoId: '1234251360' },
+    { title: 'August 2, 2026 Flight' },
+    { title: 'Resolute Eagle Launch' },
+    { title: 'Resolute Eagle Landing' },
+    { title: 'Resolute Eagle Item Drop' },
+    { title: 'Forward Look Camera Drop' },
+    { title: 'Trillium GCS Drop' }
   ]
-
-  const videos = localVideos
 
   const galleryImages = [
     {
@@ -126,7 +129,7 @@ export default function Gallery() {
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {externalVideos.map((video, index) => (
+            {videos.map((video, index) => (
               <motion.div
                 key={video.title}
                 initial={{ opacity: 0, y: 20 }}
@@ -135,12 +138,16 @@ export default function Gallery() {
                 viewport={{ once: true }}
                 className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
               >
-                {video.vimeoId ? (
+                {video.vimeoId || video.youtubeId ? (
                   <div className="relative w-full h-64 bg-black">
                     <iframe
-                      src={`https://player.vimeo.com/video/${video.vimeoId}${video.hash ? `?h=${video.hash}` : ''}`}
+                      src={
+                        video.youtubeId
+                          ? `https://www.youtube.com/embed/${video.youtubeId}`
+                          : `https://player.vimeo.com/video/${video.vimeoId}${video.vimeoHash ? `?h=${video.vimeoHash}` : ''}`
+                      }
                       title={video.title}
-                      allow="autoplay; fullscreen; picture-in-picture"
+                      allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
                       allowFullScreen
                       className="absolute inset-0 w-full h-full"
                     />
@@ -150,30 +157,6 @@ export default function Gallery() {
                     <span className="text-gray-400 text-sm">Video available on request</span>
                   </div>
                 )}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-[#414042] mb-3">{video.title}</h3>
-                  <span className="inline-block px-3 py-1 bg-[#414042] text-white text-xs font-semibold rounded-full">
-                    Video
-                  </span>
-                </div>
-              </motion.div>
-            ))}
-            {videos.map((video, index) => (
-              <motion.div
-                key={video.src}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-                viewport={{ once: true }}
-                className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
-              >
-                <video
-                  src={video.src}
-                  controls
-                  preload="metadata"
-                  playsInline
-                  className="w-full h-64 bg-black object-contain"
-                />
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-[#414042] mb-3">{video.title}</h3>
                   <span className="inline-block px-3 py-1 bg-[#ee3124] text-white text-xs font-semibold rounded-full">
