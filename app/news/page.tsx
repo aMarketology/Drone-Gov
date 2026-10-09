@@ -180,7 +180,7 @@ export default function News() {
       category: 'Contracts',
       date: 'March 2024',
       excerpt: 'HATTIESBURG, Mississippi – PAE ISR has been selected to provide an unmanned aircraft system for a Department of Homeland Security program that seeks to enhance border security operations along the U.S. borders.',
-      image: '/IMG_1207 Kenneth Burger.JPG',
+      image: '/IMG_1173 Kenneth Burger.JPG',
       slug: 'pae-isr-to-provide-uas-platform-for-dhs-border-security-operations'
     },
     {

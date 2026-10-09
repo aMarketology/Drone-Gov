@@ -198,7 +198,7 @@ export default function Offerings() {
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link
-                href="/Resolute Eagle Fixed Wing Specificatons.pdf"
+                href="/Resolute_Eagle_Capabilities_Sheet-2.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 download

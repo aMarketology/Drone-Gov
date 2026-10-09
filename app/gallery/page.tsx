@@ -10,16 +10,31 @@ import { useState } from 'react'
 export default function Gallery() {
   const [selectedCategory, setSelectedCategory] = useState('All')
 
-  const categories = ['All', 'Aerial Operations', 'ISR Systems', 'Training', 'Missions']
+  const categories = ['All', 'ISR Systems', 'Training', 'Missions']
+
+  // Files served from /public/new (small enough to keep in the repo)
+  const localVideos = [
+    { src: '/new/RE BR Launch.mp4', title: 'Resolute Eagle Launch' },
+    { src: '/new/RE BR Landing.mp4', title: 'Resolute Eagle Landing' },
+    { src: '/new/RE Item Drop.mp4', title: 'Resolute Eagle Item Drop' },
+    { src: '/new/FWD Look Cam Drop.mp4', title: 'Forward Look Camera Drop' },
+    { src: '/new/Trillium GCS Drop.MP4', title: 'Trillium GCS Drop' },
+    { src: '/new/August 2 2026.mp4', title: 'August 2, 2026 Flight' }
+  ]
+
+  // Hosted on Vimeo — these are too large to store in Git.
+  // `vimeoId` is the number in the video URL; `hash` is only needed for
+  // "Unlisted" videos, where the share URL looks like vimeo.com/<id>/<hash>.
+  const externalVideos = [
+    { vimeoId: '1234251308', hash: '', title: 'Mexico Demo — August 5' },
+    { vimeoId: '1234251285', hash: '', title: 'AV-13 Flight 2 — August 2, 2026' },
+    { vimeoId: '1234250495', hash: '', title: 'Flight Operations — July 30' },
+    { vimeoId: '1234251360', hash: '', title: 'Flight Operations — July 31' }
+  ]
+
+  const videos = localVideos
 
   const galleryImages = [
-    {
-      id: 1,
-      src: '/IMG_1207 Kenneth Burger.JPG',
-      alt: 'Resolute Eagle in flight',
-      category: 'Aerial Operations',
-      title: 'Resolute Eagle UAS'
-    },
     {
       id: 2,
       src: '/IMG_1173 Kenneth Burger.JPG',
@@ -42,13 +57,6 @@ export default function Gallery() {
       title: 'Operator Training'
     },
     {
-      id: 5,
-      src: '/IMG_1207 Kenneth Burger.JPG',
-      alt: 'Aerial surveillance',
-      category: 'Aerial Operations',
-      title: 'Surveillance Operations'
-    },
-    {
       id: 6,
       src: '/IMG_1173 Kenneth Burger.JPG',
       alt: 'VTOL capabilities',
@@ -68,13 +76,6 @@ export default function Gallery() {
       alt: 'System maintenance',
       category: 'Training',
       title: 'Maintenance Training'
-    },
-    {
-      id: 9,
-      src: '/IMG_1207 Kenneth Burger.JPG',
-      alt: 'Reconnaissance mission',
-      category: 'Aerial Operations',
-      title: 'Reconnaissance Flight'
     }
   ]
 
@@ -102,6 +103,86 @@ export default function Gallery() {
               Explore our UAS platforms, ISR operations, and mission capabilities through images
             </p>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Featured Videos */}
+      <section className="py-20 bg-[#f2f2f2]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <div className="w-16 h-1 bg-[#ee3124] mx-auto mb-8"></div>
+            <h2 className="text-4xl font-light text-[#414042] mb-6">
+              Flight Footage
+            </h2>
+            <p className="text-lg text-[#414042] max-w-3xl mx-auto">
+              Recent launch, landing, and mission demonstrations from Resolute Eagle operations.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {externalVideos.map((video, index) => (
+              <motion.div
+                key={video.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
+              >
+                {video.vimeoId ? (
+                  <div className="relative w-full h-64 bg-black">
+                    <iframe
+                      src={`https://player.vimeo.com/video/${video.vimeoId}${video.hash ? `?h=${video.hash}` : ''}`}
+                      title={video.title}
+                      allow="autoplay; fullscreen; picture-in-picture"
+                      allowFullScreen
+                      className="absolute inset-0 w-full h-full"
+                    />
+                  </div>
+                ) : (
+                  <div className="w-full h-64 bg-black flex items-center justify-center">
+                    <span className="text-gray-400 text-sm">Video available on request</span>
+                  </div>
+                )}
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-[#414042] mb-3">{video.title}</h3>
+                  <span className="inline-block px-3 py-1 bg-[#414042] text-white text-xs font-semibold rounded-full">
+                    Video
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+            {videos.map((video, index) => (
+              <motion.div
+                key={video.src}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
+              >
+                <video
+                  src={video.src}
+                  controls
+                  preload="metadata"
+                  playsInline
+                  className="w-full h-64 bg-black object-contain"
+                />
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-[#414042] mb-3">{video.title}</h3>
+                  <span className="inline-block px-3 py-1 bg-[#ee3124] text-white text-xs font-semibold rounded-full">
+                    Video
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -185,7 +266,7 @@ export default function Gallery() {
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link
-                href="/R-ISR-Data-Sheet-1.pdf"
+                href="/Resolute_Eagle_Capabilities_Sheet-2.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 download

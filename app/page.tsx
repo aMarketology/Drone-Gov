@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -8,13 +8,10 @@ import Navigation from './components/Navigation'
 import Footer from './components/Footer'
 
 export default function Home() {
-  const audioRef = useRef<HTMLAudioElement>(null)
-  const [audioStarted, setAudioStarted] = useState(false)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
   // Hero background images
   const heroImages = [
-    '/IMG_1207 Kenneth Burger.JPG',
     '/IMG_1173 Kenneth Burger.JPG',
     '/IMG_1198 Kenneth Burger.JPG',
     '/IMG_1199 Kenneth Burger.JPG'
@@ -29,30 +26,8 @@ export default function Home() {
     return () => clearInterval(interval)
   }, [heroImages.length])
 
-  useEffect(() => {
-    const startAudio = () => {
-      if (audioRef.current && !audioStarted) {
-        audioRef.current.volume = 0.15
-        audioRef.current.play().catch(() => {})
-        setAudioStarted(true)
-      }
-    }
-    
-    window.addEventListener('click', startAudio, { once: true })
-    window.addEventListener('scroll', startAudio, { once: true })
-    
-    return () => {
-      window.removeEventListener('click', startAudio)
-      window.removeEventListener('scroll', startAudio)
-    }
-  }, [audioStarted])
-
   return (
     <div className="bg-white text-gray-900">
-      <audio ref={audioRef} loop>
-        <source src="/plane-engine.wav" type="audio/wav" />
-      </audio>
-      
       <Navigation />
       
       {/* Hero Section - Full Screen with Image Slider */}
@@ -192,7 +167,7 @@ export default function Home() {
                   We build a capability that keeps the war fighter safe and provide crucial information at critical times.
                 </p>
                 <Link
-                  href="/Resolute Eagle Fixed Wing Specificatons.pdf"
+                  href="/Resolute_Eagle_Capabilities_Sheet-2.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   download

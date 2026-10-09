@@ -72,45 +72,28 @@ export default function Safety() {
       {/* SMS Platform Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <div className="w-16 h-1 bg-[#ee3124] mb-6"></div>
-              <h2 className="text-4xl font-light text-[#414042] mb-6">
-                Safety Management System
-              </h2>
-              <div className="space-y-4 text-lg text-[#414042] leading-relaxed">
-                <p>
-                  Our Safety Management System (SMS) integrates all components of the safety program, providing a comprehensive framework for identifying, assessing, and mitigating operational risks.
-                </p>
-                <p>
-                  All audits are tracked and recorded on our web-based SMS system, ensuring transparency and accountability across all operations. Our parent company, Heligroup Holdings, utilizes a web-based platform that enables real-time monitoring and continuous improvement.
-                </p>
-                <p>
-                  The SMS platform ensures compliance with FAA regulations, industry best practices, and our own rigorous internal standards, creating a culture of safety excellence throughout the organization.
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="relative h-[400px] rounded-lg overflow-hidden shadow-2xl"
-            >
-              <Image
-                src="/IMG_1207 Kenneth Burger.JPG"
-                alt="Safety Management"
-                fill
-                className="object-cover"
-              />
-            </motion.div>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <div className="w-16 h-1 bg-[#ee3124] mb-6"></div>
+            <h2 className="text-4xl font-light text-[#414042] mb-6">
+              Safety Management System
+            </h2>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 text-lg text-[#414042] leading-relaxed">
+              <p>
+                Our Safety Management System (SMS) integrates all components of the safety program, providing a comprehensive framework for identifying, assessing, and mitigating operational risks.
+              </p>
+              <p>
+                All audits are tracked and recorded on our web-based SMS system, ensuring transparency and accountability across all operations. Our parent company, Heligroup Holdings, utilizes a web-based platform that enables real-time monitoring and continuous improvement.
+              </p>
+              <p>
+                The SMS platform ensures compliance with FAA regulations, industry best practices, and our own rigorous internal standards, creating a culture of safety excellence throughout the organization.
+              </p>
+            </div>
+          </motion.div>
         </div>
       </section>
 

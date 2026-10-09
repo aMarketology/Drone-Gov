@@ -75,16 +75,6 @@ export default function Contact() {
 
       {/* === HERO SECTION === */}
       <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-[#414042]">
-        <div className="absolute inset-0">
-          <Image
-            src="/IMG_1207 Kenneth Burger.JPG"
-            alt="Contact Resolute ISR"
-            fill
-            className="object-cover opacity-40"
-            priority
-          />
-        </div>
-        
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 py-24 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

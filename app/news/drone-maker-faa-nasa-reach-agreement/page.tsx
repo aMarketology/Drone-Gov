@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '../../components/Navigation'
 import Footer from '../../components/Footer'
@@ -24,13 +23,6 @@ export default function Article() {
               <span className="text-gray-300">December 2023</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Drone maker, FAA, NASA Reach Agreement</h1>
-          </motion.div>
-        </div>
-      </section>
-      <section className="py-12 bg-white">
-        <div className="max-w-5xl mx-auto px-6 lg:px-8">
-          <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8 }} className="relative h-[400px] rounded-lg overflow-hidden shadow-2xl">
-            <Image src="/IMG_1207 Kenneth Burger.JPG" alt="Article" fill className="object-cover" />
           </motion.div>
         </div>
       </section>

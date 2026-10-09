@@ -33,42 +33,25 @@ export default function About() {
       {/* What is UAS Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <div className="w-16 h-1 bg-[#ee3124] mb-6"></div>
-              <h2 className="text-4xl font-light text-[#414042] mb-6">
-                Resolute Eagle
-              </h2>
-              <div className="space-y-4 text-lg text-[#414042] leading-relaxed">
-                <p>
-                  The Resolute Eagle is a runway-independent Unmanned Aircraft System engineered for expeditionary Intelligence, Surveillance, and Reconnaissance operations across land and maritime domains. Designed and manufactured by Resolute ISR, the platform integrates advanced sensor payloads, secure communications architecture, and modular mission systems to deliver persistent, decision-quality intelligence in austere environments.
-                </p>
-                <p>
-                  Available in both fixed-wing and VTOL configurations, the Resolute Eagle provides above-class payload capacity, mission adaptability, and operational reliability where infrastructure is limited and access is constrained. Built on disciplined engineering and operational experience, the system is purpose-built to extend reach, enhance situational awareness, and support mission success at the tactical edge.
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="relative h-[400px] rounded-lg overflow-hidden shadow-2xl"
-            >
-              <Image
-                src="/IMG_1207 Kenneth Burger.JPG"
-                alt="Resolute Eagle UAS"
-                fill
-                className="object-cover"
-              />
-            </motion.div>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <div className="w-16 h-1 bg-[#ee3124] mb-6"></div>
+            <h2 className="text-4xl font-light text-[#414042] mb-6">
+              Resolute Eagle
+            </h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 text-lg text-[#414042] leading-relaxed">
+              <p>
+                The Resolute Eagle is a runway-independent Unmanned Aircraft System engineered for expeditionary Intelligence, Surveillance, and Reconnaissance operations across land and maritime domains. Designed and manufactured by Resolute ISR, the platform integrates advanced sensor payloads, secure communications architecture, and modular mission systems to deliver persistent, decision-quality intelligence in austere environments.
+              </p>
+              <p>
+                Available in both fixed-wing and VTOL configurations, the Resolute Eagle provides above-class payload capacity, mission adaptability, and operational reliability where infrastructure is limited and access is constrained. Built on disciplined engineering and operational experience, the system is purpose-built to extend reach, enhance situational awareness, and support mission success at the tactical edge.
+              </p>
+            </div>
+          </motion.div>
         </div>
       </section>
 

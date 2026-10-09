@@ -38,3 +38,13 @@ next-env.d.ts
 
 # Newsletter signups
 /data/newsletter-signups.json
+
+# Large source videos — hosted externally (Vimeo), not stored in Git.
+# Small clips are intentionally re-included below.
+/public/new/*
+!/public/new/RE BR Launch.mp4
+!/public/new/RE BR Landing.mp4
+!/public/new/RE Item Drop.mp4
+!/public/new/FWD Look Cam Drop.mp4
+!/public/new/Trillium GCS Drop.MP4
+!/public/new/August 2 2026.mp4

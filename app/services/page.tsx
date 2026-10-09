@@ -245,7 +245,7 @@ export default function Services() {
             We build a capability that keeps the war fighter safe and provide crucial information at critical times.
           </p>
           <Link
-            href="/R-ISR-Data-Sheet-1.pdf"
+            href="/Resolute_Eagle_Capabilities_Sheet-2.pdf"
             target="_blank"
             rel="noopener noreferrer"
             download
